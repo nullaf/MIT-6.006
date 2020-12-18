@@ -6,9 +6,6 @@ def insertion_sort(arr):
     return arr
 
 
-ex = [5, 1, 3, 6, 8, 35, 7, 1, 37, 23]
-
-
 def merge(left, right):
     i, j, res = 0, 0, []
     while i < len(left) and j < len(right):
@@ -28,6 +25,3 @@ def merge_sort(arr):
         return arr
     left, right = merge_sort(arr[:n // 2]), merge_sort(arr[n // 2:])
     return merge(left, right)
-
-
-print(merge_sort(ex))
