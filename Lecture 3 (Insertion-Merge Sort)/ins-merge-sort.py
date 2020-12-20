@@ -1,4 +1,5 @@
 def insertion_sort(arr):
+    # Time Complexity O(n * n)
     for i in range(1, len(arr)):
         while i > 0 and arr[i - 1] > arr[i]:
             arr[i], arr[i - 1] = arr[i - 1], arr[i]
@@ -7,6 +8,7 @@ def insertion_sort(arr):
 
 
 def merge(left, right):
+    # Time Complexity: O(n + m)
     i, j, res = 0, 0, []
     while i < len(left) and j < len(right):
         if left[i] < right[j]:
@@ -20,6 +22,7 @@ def merge(left, right):
 
 
 def merge_sort(arr):
+    # Time Complexity: O(n * log(n))
     n = len(arr)
     if n < 2:
         return arr

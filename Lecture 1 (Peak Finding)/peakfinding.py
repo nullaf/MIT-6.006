@@ -1,4 +1,5 @@
 def peak1d(arr):
+    # Time Complexity: O(log(n))
     start, stop = 0, len(arr)
     while True:
         mid = (start + stop) // 2
