@@ -9,13 +9,13 @@ def main():
     else:
         doc1 = sys.argv[1]
         doc2 = sys.argv[2]
-        freq_map1 = wordFrequenciesForFile(doc1)
-        freq_map2 = wordFrequenciesForFile(doc2)
-        distance = vectorAngle(freq_map1, freq_map2)
+        freq_map1 = word_frequencies_for_file(doc1)
+        freq_map2 = word_frequencies_for_file(doc2)
+        distance = vector_angle(freq_map1, freq_map2)
         print(f"The distance between documents: {distance} (Radians)")
 
 
-def readFile(filename):
+def read_file(filename):
     try:
         f = open(filename, 'r')
         return f.read()
@@ -24,31 +24,31 @@ def readFile(filename):
         sys.exit()
 
 
-def getWordsFromText(text):
+def get_words_from_text(text):
     text = text.translate(text.maketrans(string.punctuation + string.ascii_uppercase,
                                          " " * len(string.punctuation) + string.ascii_lowercase))
-    wordList = text.split()
-    return wordList
+    word_list = text.split()
+    return word_list
 
 
-def countFrequency(wordlist):
-    D = dict()
-    for newWord in wordlist:
-        if newWord in D:
-            D[newWord] = D[newWord] + 1
+def count_frequency(word_list):
+    d = dict()
+    for newWord in word_list:
+        if newWord in d:
+            d[newWord] = d[newWord] + 1
         else:
-            D[newWord] = 1
-    return D
+            d[newWord] = 1
+    return d
 
 
-def wordFrequenciesForFile(filename):
-    lineList = readFile(filename)
-    wordList = getWordsFromText(' '.join(lineList))
-    freqMap = countFrequency(wordList)
-    return freqMap
+def word_frequencies_for_file(filename):
+    line_list = read_file(filename)
+    word_list = get_words_from_text(' '.join(line_list))
+    freq_map = count_frequency(word_list)
+    return freq_map
 
 
-def innerProduct(d1, d2):
+def inner_product(d1, d2):
     result = 0
     for key in d1:
         if key in d2:
@@ -56,9 +56,9 @@ def innerProduct(d1, d2):
     return result
 
 
-def vectorAngle(d1, d2):
-    numerator = innerProduct(d1, d2)
-    denominator = math.sqrt(innerProduct(d1, d1) * innerProduct(d2, d2))
+def vector_angle(d1, d2):
+    numerator = inner_product(d1, d2)
+    denominator = math.sqrt(inner_product(d1, d1) * inner_product(d2, d2))
     return math.acos(numerator / denominator)
 
 
